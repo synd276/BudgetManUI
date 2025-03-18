@@ -1,7 +1,9 @@
 
 export class SettingViewModel {
-    language: string | undefined;
-    currency: string | undefined;
-    defaultMoneyHolderId: string | undefined;
-    isCreateBaseData: boolean | undefined;
+    IsCreateBaseData: boolean | undefined;
+    Language: string | undefined;
+    Currency: string | undefined;
+    DefaultMoneyHolderId: string | undefined;
+    ChatUserId: string | undefined;
+    // MemberList: string[] | undefined;
 }

@@ -9,7 +9,8 @@ export const handleSaveSetting = async (model: SettingViewModel): Promise<AppRes
     let result= new AppResponse<string>();
 
     try {
-        // console.log(model);
+        console.log(model);
+        console.log('Request payload:', JSON.stringify(model, null, 2));
         const respone = await axiosInstance.put(saveSettingUrl, model);
         // console.log(respone.data);
         const responseObject = respone.data

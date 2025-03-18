@@ -42,9 +42,9 @@
     <el-form-item :label="$t('setting.chatUserId')">
       <el-input v-model="form.chatUserId"> </el-input>
     </el-form-item>
-    <el-form-item :label="$t('setting.memberList')">
+    <!-- <el-form-item :label="$t('setting.memberList')">
       <el-input type="textarea" v-model="form.memberList"> </el-input>
-    </el-form-item>
+    </el-form-item> -->
     <el-form-item>
       <el-button type="primary" @click="submitForm()">{{
         $t("save")
@@ -118,7 +118,13 @@ onMounted(async () => {
 });
 
 // const _i18n = i18n;
-const settingRequest = ref<SettingViewModel>();
+const settingRequest = reactive<SettingViewModel>({
+  Language: '',
+  Currency: '',
+  DefaultMoneyHolder: '',
+  ChatUserId: '',
+  // MemberList: []
+});
 const submitForm = async () => {
   // languages.global.legacy = false;
   languages.global.locale.value = form.language as keyof typeof languageOptions;
@@ -129,11 +135,11 @@ const submitForm = async () => {
   // console.log(form.defaultMoneyHolder);
   //need to save to database
   // console.log(form.language);
-  settingRequest.value.language = form.language;
-  settingRequest.value.currency = form.currency;
-  settingRequest.value.defaultMoneyHolder = form.defaultMoneyHolder;
-  settingRequest.value.chatUserId = form.chatUserId;
-  settingRequest.value.memberList = form.memberList;
+  settingRequest.Language = form.language;
+  settingRequest.Currency = form.currency;
+  settingRequest.DefaultMoneyHolder = form.defaultMoneyHolder;
+  settingRequest.ChatUserId = form.chatUserId;
+  // settingRequest.MemberList = form.memberList;
   // console.log(settingRequest.value);
   await handleSaveSetting(settingRequest);
 };
